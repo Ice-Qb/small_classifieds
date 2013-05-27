@@ -10,6 +10,7 @@ gem 'jquery-rails', '2.0.2'
 gem 'carrierwave'
 gem 'haml-rails'
 gem 'devise'
+gem 'simple_form'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'
