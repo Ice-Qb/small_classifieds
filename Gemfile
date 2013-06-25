@@ -11,6 +11,7 @@ gem 'carrierwave'
 gem 'haml-rails'
 gem 'devise'
 gem 'simple_form'
+gem 'rmagick', :require => 'RMagick'
 
 group :development, :test do
   gem 'sqlite3', '1.3.5'

@@ -2,6 +2,7 @@ Try::Application.routes.draw do
   resources :users
   resources :sessions, only: [:new, :create, :destroy]  
   resources :classifieds, only: [:new, :create, :destroy, :show, :edit, :update]
+  resources :categories, only: [:new, :create, :destroy]  
 
   match '/signup',  to: 'users#new'
   match '/signin',  to: 'sessions#new'
@@ -9,8 +10,10 @@ Try::Application.routes.draw do
   get "users/new"
 
   root to: 'static_pages#home'
+  get 'categories/:name', to: 'static_pages#home', as: :name
   match '/about',   to: 'static_pages#about'
-  match '/admin',   to: 'static_pages#admin'
+  match '/admin',   to: 'static_pages#home'
+
   
   
 

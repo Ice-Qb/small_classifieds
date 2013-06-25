@@ -1,0 +1,7 @@
+- provide(:title, 'New Category')
+%h1 New Category
+.row
+  .span6.offset3
+    = simple_form_for(@category, :html => {:class => 'form-vertical' }) do |f|      
+      = f.input :name
+      = f.button :submit, 'Create', class: "btn btn-large btn-primary"

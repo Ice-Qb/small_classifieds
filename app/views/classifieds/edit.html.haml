@@ -4,8 +4,10 @@
   .span6.offset3
     = simple_form_for(@classified, :html => {:class => 'form-vertical' }) do |f|      
       = f.input :title
+      = f.association :category
       = f.input :content
       = f.input :email_address, label: 'Email'
       = f.input :city
       = f.input :address
+      = f.input :image
       = f.button :submit, 'Update', class: "btn btn-large btn-primary"
