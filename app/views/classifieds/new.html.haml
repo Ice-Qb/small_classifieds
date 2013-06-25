@@ -1,0 +1,11 @@
+- provide(:title, 'New Classified')
+%h1 New Classified
+.row
+  .span6.offset3
+    = simple_form_for(@classified, :html => {:class => 'form-vertical' }) do |f|      
+      = f.input :title
+      = f.input :content
+      = f.input :email_address, label: 'Email'
+      = f.input :city
+      = f.input :address
+      = f.button :submit, 'Create', class: "btn btn-large btn-primary"

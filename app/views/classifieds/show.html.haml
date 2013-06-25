@@ -1,0 +1,11 @@
+- provide(:title, @classified.title)
+.row
+  .span8
+    %h3= @classified.title
+    %p content:
+    %p= @classified.content
+    %p email:  #{@classified.email_address}
+    %p city:  #{@classified.city}
+    %p address:  #{@classified.address}
+    %span.timestamp
+    Created #{time_ago_in_words(@classified.created_at)} ago.

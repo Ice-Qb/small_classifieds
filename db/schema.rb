@@ -11,7 +11,20 @@
 #
 # It's strongly recommended to check this file into your version control system.
 
-ActiveRecord::Schema.define(:version => 20130528162814) do
+ActiveRecord::Schema.define(:version => 20130529164736) do
+
+  create_table "classifieds", :force => true do |t|
+    t.string   "title"
+    t.text     "content"
+    t.string   "city"
+    t.string   "address"
+    t.integer  "user_id"
+    t.datetime "created_at",    :null => false
+    t.datetime "updated_at",    :null => false
+    t.string   "email_address"
+  end
+
+  add_index "classifieds", ["user_id", "created_at"], :name => "index_classifieds_on_user_id_and_created_at"
 
   create_table "users", :force => true do |t|
     t.string   "name"

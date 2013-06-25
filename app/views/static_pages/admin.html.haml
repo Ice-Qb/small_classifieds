@@ -1,0 +1,12 @@
+- provide(:title, 'Admin Panel')
+- if signed_in?
+  - if current_user.admin?
+    .row
+      %aside.span4
+        %section
+          = link_to "New Classified", new_classified_path, class: "btn btn-large btn-primary"
+      .span8
+        %ul.classifieds
+          = render @classifieds
+          = will_paginate @classifieds
+

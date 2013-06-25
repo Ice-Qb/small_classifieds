@@ -3,7 +3,7 @@ require 'spec_helper'
 describe User do
 
   before do
-    @user = User.new(name: "Example User", email: "user@example.com",
+    @user = User.new(name: "Example User", email: "lite@example.com",
                      password: "foobar", password_confirmation: "foobar")
   end
 
@@ -17,6 +17,7 @@ describe User do
   it { should respond_to(:remember_token) }
   it { should respond_to(:authenticate) }
   it { should respond_to(:admin) }
+  it { should respond_to(:classifieds) }
 
   it { should be_valid }
   it { should_not be_admin }
@@ -134,5 +135,29 @@ describe User do
   describe "remember token" do
     before { @user.save }
     its(:remember_token) { should_not be_blank }
+  end
+
+  describe "classified associations" do
+
+    before { @user.save }
+    let!(:older_classified) do
+      FactoryGirl.create(:classified, user: @user, created_at: 1.day.ago)
+    end
+    let!(:newer_classified) do
+      FactoryGirl.create(:classified, user: @user, created_at: 1.hour.ago)
+    end
+
+    it "should have the right classifieds in the right order" do
+      @user.classifieds.should == [newer_classified, older_classified]
+    end
+
+    it "should destroy associated classifieds" do
+      classifieds = @user.classifieds.dup
+      @user.destroy
+      classifieds.should_not be_empty
+      classifieds.each do |classified|
+        Classified.find_by_id(classified.id).should be_nil
+      end
+    end
   end
 end

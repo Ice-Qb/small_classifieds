@@ -4,3 +4,10 @@
     %section
       %h1
         = @user.name
+  .span8
+    - if @user.classifieds.any?
+      %h3
+        Classifieds (#{@user.classifieds.count})
+      %ol.classifieds
+        = render @classifieds
+      = will_paginate @classifieds

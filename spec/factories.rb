@@ -9,4 +9,13 @@ FactoryGirl.define do
       admin true
     end
   end
+
+  factory :classified do
+  	title "New advertisement"
+    content "Lorem ipsum"
+    email_address "new@mail.com"
+    city "Chicago"
+    address "9826 Jolly Drive"
+    user
+  end
 end

@@ -4,9 +4,10 @@
       = link_to "small classifieds", root_path, id: "logo"
       %nav
         %ul.nav.pull-right
-          %li= link_to "Home", root_path
-          - if signed_in?
-            %li= link_to "Users", users_path
+          %li= link_to "New Classified", new_classified_path
+          - if signed_in?            
+            - if current_user.admin?
+              %li= link_to "Users", users_path
             %li#fat-menu.dropdown
               %a.dropdown-toggle{"data-toggle" => "dropdown", :href => "#"}
                 Account

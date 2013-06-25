@@ -15,5 +15,17 @@ namespace :db do
                    password: password,
                    password_confirmation: password)
     end
+
+    users = User.all(limit: 6)
+    50.times do |n|
+      title         = "Title #{n}"
+      content       = Faker::Lorem.sentence(5)
+      email_address = "email#{n}@address.com"
+      city          = "city #{n}"
+      address       = "address #{n}"  
+      users.each { |user| user.classifieds.create!(
+        title: title, content: content, email_address: email_address, 
+        city: city, address: address) }
+    end
   end
 end
