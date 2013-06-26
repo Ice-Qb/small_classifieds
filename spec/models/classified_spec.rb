@@ -2,10 +2,12 @@ require 'spec_helper'
 
 describe Classified do
   let(:user) { FactoryGirl.create(:user) }
+  let(:category) { FactoryGirl.create(:category) }
   before do
     @classified = user.classifieds.build(title: "New advertisement", 
-    	content: "Some content, such as: Lorem ipsum",
-        email_address: "new@mail.com", city: "Chicago", address: "9826 Jolly Drive")
+    	  content: "Some content, such as: Lorem ipsum",
+        email_address: "some_old@mail.com", city: "Chicago", 
+        address: "9826 Jolly Drive", category_id: category.id)
   end
 
   subject { @classified }

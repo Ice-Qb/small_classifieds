@@ -230,7 +230,7 @@ input {
   }
 }
 .content {
-  display: block;
+  display: block;  
 }
 .timestamp {
   color: $grayLight;
@@ -244,4 +244,10 @@ aside {
     height: 100px;
     margin-bottom: 5px;
   }
+}
+.other_content {
+  font-weight: bold;
+}
+.c {
+  text-align: center;
 }

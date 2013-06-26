@@ -1,12 +1,25 @@
 - provide(:title, @classified.title)
 .row
   .span8
-    %h3= @classified.title
+    %h3.c= @classified.title
     = image_tag @classified.image_url.to_s
-    %p content:
-    %p= @classified.content
-    %p email:  #{@classified.email_address}
-    %p city:  #{@classified.city}
-    %p address:  #{@classified.address}
+    %p.other_content content:
+    %p.content= @classified.content
+    %p
+      = succeed " " do 
+        %span.other_content email:  
+      =@classified.email_address
+    %p 
+      = succeed " " do 
+        %span.other_content city:  
+      =@classified.city
+    %p 
+      = succeed " " do 
+        %span.other_content address:    
+      =@classified.address
+    %p 
+      = succeed " " do 
+        %span.other_content category:    
+      =Category.find_by_id(@classified.category_id).name  
     %span.timestamp
-    Created #{time_ago_in_words(@classified.created_at)} ago.
+      Created #{time_ago_in_words(@classified.created_at)} ago.

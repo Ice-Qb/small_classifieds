@@ -5,7 +5,7 @@
       = link_to "New Classified", new_classified_path, class: "btn btn-large btn-primary"
       %br      
       %br
-      %p Categories:
+      %p.other_content Categories:
       - raw @categories.map(&:name).map { |t| link_to t, category_path(t) }.each do |i|
         %li= i          
   .span8

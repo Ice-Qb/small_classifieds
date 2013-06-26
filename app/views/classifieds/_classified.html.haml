@@ -1,16 +1,26 @@
 %li
   %span= link_to classified.title, classified
-  - if current_user.admin?
-    | #{link_to "edit", edit_classified_path(classified.id) }
-    | #{link_to "delete", classified, method: :delete, data: { confirm: "You sure?" }}  
+  - if signed_in?
+    - if current_user.admin?
+      | #{link_to "edit", edit_classified_path(classified.id) }
+      | #{link_to "delete", classified, method: :delete, data: { confirm: "You sure?" }}  
   %br
   %span.content
     = classified.content
-  %span= classified.email_address
+  %span
+    = succeed " " do 
+      %span.other_content email:  
+    =classified.email_address
   %br
-  %span= classified.city
+  %span
+    = succeed " " do 
+      %span.other_content city:  
+    =classified.city
   %br
-  %span= classified.address
+  %span
+    = succeed " " do 
+      %span.other_content address:  
+    =classified.address
   %br
   %span.timestamp
     Created #{time_ago_in_words(classified.created_at)} ago.
