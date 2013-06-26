@@ -19,12 +19,18 @@ describe Classified do
   it { should respond_to(:address) }
   it { should respond_to(:user_id) }
   it { should respond_to(:user) }
+  it { should respond_to(:category_id) }
   its(:user) { should == user }
 
   it { should be_valid }
 
   describe "when user_id is not present" do
     before { @classified.user_id = nil }
+    it { should_not be_valid }
+  end
+
+  describe "when user_id is not present" do
+    before { @classified.category_id = nil }
     it { should_not be_valid }
   end
 

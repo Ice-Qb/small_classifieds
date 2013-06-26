@@ -61,19 +61,19 @@ describe "User pages" do
     let(:user) { FactoryGirl.create(:user) }
     let!(:m1) { FactoryGirl.create(:classified, user: user, 
          title: "Title", content: "Foo", email_address: "some@mail.com", 
-         city: "Kyiv", address: "Symonenko st.") }
+         city: "Kyiv", address: "Symonenko st.", category_id: 1) }
     let!(:m2) { FactoryGirl.create(:classified, user: user, 
          title: "Title2", content: "Foo2", email_address: "some2@mail.com", 
-         city: "Lviv", address: "Shevchenko st.") }
-    # before { visit user_path(user) }
+         city: "Lviv", address: "Shevchenko st.", category_id: 2) }
+    before { visit user_path(user) }
 
-    # it { should have_selector('h1',    text: user.name) }
-    # it { should have_selector('title', text: user.name) }
-    # describe "classifieds" do
-    #   it { should have_content(m1.content) }
-    #   it { should have_content(m2.content) }
-    #   it { should have_content(user.classifieds.count) }
-    # end
+    it { should have_selector('h1',    text: user.name) }
+    it { should have_selector('title', text: user.name) }
+    describe "classifieds" do
+      it { should have_content(m1.content) }
+      it { should have_content(m2.content) }
+      it { should have_content(user.classifieds.count) }
+    end
   end
 
   describe "signup" do
